@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StudDashbComponent } from './private/stud-dashb/stud-dashb.component';
 import { HomeComponent } from './public/home/home.component';
 import { LoginComponent } from './public/login/login.component';
 import { RegisterComponent } from './public/register/register.component';
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path:'register',
     component:RegisterComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'student',
+    component:StudDashbComponent,
     pathMatch:'full'
   }
 ];

@@ -20,6 +20,11 @@ import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './public/register/register.component';
 import { AdminRegComponent } from './public/register/admin-reg/admin-reg.component';
 import { StudentRegComponent } from './public/register/student-reg/student-reg.component';
+import { PrivateComponent } from './private/private.component';
+import { AdminDashbComponent } from './private/admin-dashb/admin-dashb.component';
+import { StudDashbComponent } from './private/stud-dashb/stud-dashb.component';
+import { StudProfileComponent } from './private/stud-dashb/stud-profile/stud-profile.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,11 @@ import { StudentRegComponent } from './public/register/student-reg/student-reg.c
     HomeComponent,
     RegisterComponent,
     AdminRegComponent,
-    StudentRegComponent
+    StudentRegComponent,
+    PrivateComponent,
+    AdminDashbComponent,
+    StudDashbComponent,
+    StudProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +52,8 @@ import { StudentRegComponent } from './public/register/student-reg/student-reg.c
     MatTabsModule,
     MatFormFieldModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
