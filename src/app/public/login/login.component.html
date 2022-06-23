@@ -1,9 +1,17 @@
 <div class="container">
-    <div class="container">
-        <mat-tab-group>
-            <mat-tab label="Student"> <app-student-login></app-student-login> </mat-tab>
-            <mat-tab label="Admin"> <app-admin-login></app-admin-login> </mat-tab>
-          </mat-tab-group>
+  <div class="container">
+    <mat-tab-group>
+      <mat-tab label="Student">
+        <app-student-login></app-student-login>
+      </mat-tab>
+      <mat-tab label="Admin"> <app-admin-login></app-admin-login> </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="container mt-5">
+    <div class="row" style="text-align: center;">
+        <div class="col">
+            <a mat-button href="/register">Don't have an account? Create one</a>
+        </div>
     </div>
-      
+  </div>
 </div>

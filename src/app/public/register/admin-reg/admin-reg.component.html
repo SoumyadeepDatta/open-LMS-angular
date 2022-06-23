@@ -1,0 +1,51 @@
+<div class="container mt-2">
+    <form class="col-lg-8" action="">
+      <div class="row">
+        <div class="col-lg-4">
+          <mat-form-field>
+            <input placeholder="Name" required type="text" matInput />
+          </mat-form-field>
+        </div>
+  
+        <div class="col-lg-4">
+          <mat-form-field>
+            <input placeholder="Role" type="text" matInput />
+          </mat-form-field>
+        </div>
+  
+        <div class="col-lg-4">
+          <mat-form-field>
+            <input placeholder="Email" required type="email" matInput />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <mat-form-field>
+            <input placeholder="Username" required type="text" matInput />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4">
+          <mat-form-field>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              placeholder="Password"
+              required
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+      <button type="submit" mat-raised-button color="primary">Sign Up</button>
+    </form>
+  </div>
+  

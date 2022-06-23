@@ -17,6 +17,9 @@ import { HomeComponent } from './public/home/home.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { RegisterComponent } from './public/register/register.component';
+import { AdminRegComponent } from './public/register/admin-reg/admin-reg.component';
+import { StudentRegComponent } from './public/register/student-reg/student-reg.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { MatInputModule } from '@angular/material/input';
     LoginComponent,
     AdminLoginComponent,
     StudentLoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    AdminRegComponent,
+    StudentRegComponent
   ],
   imports: [
     BrowserModule,
