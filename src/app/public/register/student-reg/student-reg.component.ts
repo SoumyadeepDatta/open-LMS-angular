@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-student-reg',
@@ -9,9 +10,27 @@ export class StudentRegComponent implements OnInit {
 
   hide=true;
 
-  constructor() { }
+  loggedStudent={
+    id:'',
+    name:'',
+    username:'',
+    email:'',
+    password:'',
+    sem:''
+  }
+
+  constructor(private studentService:StudentService) { }
 
   ngOnInit(): void {
   }
 
+  registerStudent():void{
+    this.studentService.register(this.loggedStudent).subscribe((e:any)=>{
+      
+      this.studentService.saveStudentLocaly(e.username,e.password);
+      window.location.href='/student';
+      // console.log(this.studentService.isStudentLogged());
+      
+    });
+  }
 }

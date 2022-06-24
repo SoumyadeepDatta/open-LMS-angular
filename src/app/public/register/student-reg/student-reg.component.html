@@ -1,39 +1,51 @@
 <div class="container mt-2">
-  <form class="col-lg-8" action="">
+  <form (ngSubmit)="registerStudent()" class="col-lg-8" action="">
     <div class="row">
       <div class="col-lg-4">
         <mat-form-field>
-          <input placeholder="Name" required type="text" matInput />
+          <input [(ngModel)]="loggedStudent.name" placeholder="Name"
+          name="studentName" required type="text" matInput />
         </mat-form-field>
       </div>
 
       <div class="col-lg-4">
         <mat-form-field>
-          <input placeholder="Semester" required type="number" matInput />
+          <input placeholder="Semester"
+          [(ngModel)]="loggedStudent.sem"
+          name="sem"
+           required type="number" matInput />
         </mat-form-field>
       </div>
 
       <div class="col-lg-4">
         <mat-form-field>
-          <input placeholder="Email" required type="email" matInput />
+          <input placeholder="Email"
+          [(ngModel)]="loggedStudent.email"
+          name="email"
+           required type="email" matInput />
         </mat-form-field>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-4">
         <mat-form-field>
-          <input placeholder="Username" required type="text" matInput />
+          <input 
+          [(ngModel)]="loggedStudent.username"
+          name="username"
+          placeholder="Username" required type="text" matInput />
         </mat-form-field>
       </div>
       <div class="col-lg-4">
         <mat-form-field>
           <input
             matInput
+            [(ngModel)]="loggedStudent.password"
+            name="password"
             [type]="hide ? 'password' : 'text'"
             placeholder="Password"
             required
           />
-          <button
+          <a
             mat-icon-button
             matSuffix
             (click)="hide = !hide"
@@ -41,7 +53,7 @@
             [attr.aria-pressed]="hide"
           >
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-          </button>
+        </a>
         </mat-form-field>
       </div>
     </div>

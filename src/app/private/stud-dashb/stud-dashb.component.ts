@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-stud-dashb',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudDashbComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentService:StudentService) { }
 
   ngOnInit(): void {
+    // if(!this.studentService.isStudentLogged()){
+    //   window.location.href='/login';
+    // }
+  }
+
+  logout(){
+    this.studentService.logoutStudent();
+    window.location.href='/login';
   }
 
 }

@@ -1,6 +1,6 @@
 <mat-card class="example-card">
   <mat-card-title-group>
-    <mat-card-title>Student name</mat-card-title>
+    <mat-card-title>{{student.name}}</mat-card-title>
     <mat-card-subtitle>Student</mat-card-subtitle>
     <img
       mat-card-sm-image
@@ -9,9 +9,19 @@
     />
   </mat-card-title-group>
   <mat-card-content>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error ab nulla
-    perferendis ea, veniam et hic aperiam sed explicabo doloremque minus magnam
-    odit illum labore in molestiae, unde rerum libero.
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon>person</mat-icon>&nbsp; {{student.username}}
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <mat-icon> email</mat-icon>&nbsp; {{student.email}}
+      </mat-list-item>
+      
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <b>Semester :&nbsp;</b> {{student.sem}}
+      </mat-list-item>
+    </mat-list>
   </mat-card-content>
   <mat-card-actions>
     <button mat-icon-button><mat-icon>edit</mat-icon></button>
