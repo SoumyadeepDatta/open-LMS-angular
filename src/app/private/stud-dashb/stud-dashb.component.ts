@@ -11,9 +11,7 @@ export class StudDashbComponent implements OnInit {
   constructor(private studentService:StudentService) { }
 
   ngOnInit(): void {
-    // if(!this.studentService.isStudentLogged()){
-    //   window.location.href='/login';
-    // }
+    // TODO auth guard
   }
 
   logout(){

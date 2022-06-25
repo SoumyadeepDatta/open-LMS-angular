@@ -8,11 +8,23 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class StudProfileComponent implements OnInit {
 
-  student:any;
+  student={
+    id:'',
+    name:'',
+    username:'',
+    email:'',
+    password:'',
+    sem:''
+  }
 
   constructor(private studentService:StudentService) { }
 
   ngOnInit(): void {
+    
+    //////////////////////////////////////////move to guard
+    
+    /////////////////////////////////////////////
+
     this.studentService.fetchStudent().subscribe((e:any)=>{
       this.student=e;
     },

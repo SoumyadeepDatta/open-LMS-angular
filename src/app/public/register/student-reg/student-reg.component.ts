@@ -22,6 +22,8 @@ export class StudentRegComponent implements OnInit {
   constructor(private studentService:StudentService) { }
 
   ngOnInit(): void {
+    
+    
   }
 
   registerStudent():void{
@@ -29,7 +31,7 @@ export class StudentRegComponent implements OnInit {
       
       this.studentService.saveStudentLocaly(e.username,e.password);
       window.location.href='/student';
-      // console.log(this.studentService.isStudentLogged());
+      
       
     });
   }
