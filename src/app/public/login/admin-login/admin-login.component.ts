@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -9,9 +10,24 @@ export class AdminLoginComponent implements OnInit {
 
   hide = true;
 
-  constructor() { }
+  credential = {
+    username: '',
+    password: '',
+  };
+
+  constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
+  }
+
+  loginAdmin(){
+    if(this.credential.username=='' || this.credential.password==''){
+      window.location.reload();
+    }
+    else{
+      this.adminService.login(this.credential);
+      window.location.href='/admin';
+    }
   }
 
 }

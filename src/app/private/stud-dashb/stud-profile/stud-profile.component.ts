@@ -20,10 +20,6 @@ export class StudProfileComponent implements OnInit {
   constructor(private studentService:StudentService) { }
 
   ngOnInit(): void {
-    
-    //////////////////////////////////////////move to guard
-    
-    /////////////////////////////////////////////
 
     this.studentService.fetchStudent().subscribe((e:any)=>{
       this.student=e;

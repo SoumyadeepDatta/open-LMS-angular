@@ -1,18 +1,23 @@
 <div class="container mt-2">
-  <form class="col-3" action="">
+  <form (ngSubmit)="loginAdmin()" class="col-3" action="">
     <div class="row">
       <mat-form-field>
-        <input placeholder="Username" type="text" matInput />
+        <input
+        [(ngModel)]="credential.username"
+        name="username"
+         placeholder="Username" type="text" matInput />
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
         <input
+        [(ngModel)]="credential.password"
+        name="password"
           matInput
           [type]="hide ? 'password' : 'text'"
           placeholder="Password"
         />
-        <button
+        <a
           mat-icon-button
           matSuffix
           (click)="hide = !hide"
@@ -20,7 +25,7 @@
           [attr.aria-pressed]="hide"
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
+      </a>
       </mat-form-field>
     </div>
     <button type="submit" mat-raised-button color="primary">Login</button>

@@ -27,12 +27,24 @@ export class StudentRegComponent implements OnInit {
   }
 
   registerStudent():void{
-    this.studentService.register(this.loggedStudent).subscribe((e:any)=>{
+
+    if(
+      this.loggedStudent.email=='' ||
+      this.loggedStudent.username=='' ||
+      this.loggedStudent.password=='' ||
+      this.loggedStudent.name==''
+    ){
+      window.location.reload();
+    }
+
+    else{
+      this.studentService.register(this.loggedStudent).subscribe((e:any)=>{
       
-      this.studentService.saveStudentLocaly(e.username,e.password);
-      window.location.href='/student';
-      
-      
-    });
+        this.studentService.saveStudentLocaly(e.username,e.password);
+        window.location.href='/student';
+        
+        
+      });
+    }
   }
 }

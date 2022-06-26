@@ -27,6 +27,7 @@ import { StudProfileComponent } from './private/stud-dashb/stud-profile/stud-pro
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
+import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {MatListModule} from '@angular/material/list';
     AdminDashbComponent,
     StudDashbComponent,
     StudProfileComponent,
+    AdminProfileComponent,
   ],
   imports: [
     BrowserModule,

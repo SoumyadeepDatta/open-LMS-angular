@@ -1,0 +1,31 @@
+<mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>{{admin.name}}</mat-card-title>
+      <mat-card-subtitle>Admin</mat-card-subtitle>
+      <img
+        mat-card-sm-image
+        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+        style="border-radius: 50%; height: 100px; width: 100px;"
+      />
+    </mat-card-title-group>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <mat-icon>person</mat-icon>&nbsp; {{admin.username}}
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <mat-icon> email</mat-icon>&nbsp; {{admin.email}}
+        </mat-list-item>
+        
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem">
+          <b>Role :&nbsp;</b> {{admin.role}}
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button><mat-icon>share</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+  
