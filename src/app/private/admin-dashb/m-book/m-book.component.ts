@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { BookService } from 'src/app/services/book.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatSort, Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-m-book',
@@ -11,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class MBookComponent implements OnInit {
   books = [];
 
-  displayedColumns: string[] = ['id', 'name', 'isbn', 'qty'];
+  displayedColumns: string[] = ['id', 'name', 'isbn', 'qty','actions'];
 
   dataSource:any;
   
@@ -26,11 +28,14 @@ export class MBookComponent implements OnInit {
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  @ViewChild(MatSort)
+  sort!: MatSort;
 
 
   constructor(
     private bookService: BookService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private _liveAnnouncer: LiveAnnouncer
   ) {}
 
   
@@ -41,6 +46,7 @@ export class MBookComponent implements OnInit {
         this.dataSource=new MatTableDataSource<any>(e);
         
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
         this.cdr.detectChanges();
       },
       (err) => {
@@ -50,4 +56,18 @@ export class MBookComponent implements OnInit {
       }
     );
   }
+
+  /** Announce the change in sort state for assistive technology. */
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
 }

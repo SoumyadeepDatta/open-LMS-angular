@@ -31,6 +31,7 @@ import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin
 import { MBookComponent } from './private/admin-dashb/m-book/m-book.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
