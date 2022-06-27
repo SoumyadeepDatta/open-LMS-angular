@@ -1,8 +1,10 @@
 <!-- <p>m-book works!</p>
 {{books | json}} -->
 
-<div class="container my-5">
-  <button mat-icon-button class="mat-elevation-z8"><mat-icon>add</mat-icon></button>
+<div class="container mb-5">
+  <div class="container my-3">
+    <button mat-icon-button class="mat-elevation-z8"><mat-icon>add</mat-icon></button>
+  </div>
   <table
     mat-table
     [dataSource]="dataSource"
@@ -61,8 +63,8 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let book">
-        <button mat-icon-button><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
+        <button (click)="openEditBookDialog(book)" mat-icon-button><mat-icon>edit</mat-icon></button>
+        <button (click)="deleteBook(book.id)" mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
       </mat-cell>
       
     </ng-container>

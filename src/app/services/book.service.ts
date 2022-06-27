@@ -15,4 +15,12 @@ export class BookService {
   add(b:any) {
     return this.http.post(`http://localhost:8080/book/add`,b);
   }
+
+  update(b:any){
+    return this.http.put(`http://localhost:8080/book/update`,b);
+  }
+
+  delete(id:any){
+    return this.http.delete(`http://localhost:8080/book/delete/${id}`);
+  }
 }

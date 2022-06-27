@@ -28,10 +28,11 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin-profile.component';
-import { MBookComponent } from './private/admin-dashb/m-book/m-book.component';
+import { EditBook, MBookComponent } from './private/admin-dashb/m-book/m-book.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MatSortModule } from '@angular/material/sort';
     StudProfileComponent,
     AdminProfileComponent,
     MBookComponent,
+    EditBook
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

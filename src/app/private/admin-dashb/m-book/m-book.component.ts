@@ -1,9 +1,27 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { BookService } from 'src/app/services/book.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+
+export interface EditBookDialogData {
+  id: number;
+  name: string;
+  isbn: number;
+  qty: number;
+}
 
 @Component({
   selector: 'app-m-book',
@@ -13,10 +31,9 @@ import { MatSort, Sort } from '@angular/material/sort';
 export class MBookComponent implements OnInit {
   books = [];
 
-  displayedColumns: string[] = ['id', 'name', 'isbn', 'qty','actions'];
+  displayedColumns: string[] = ['id', 'name', 'isbn', 'qty', 'actions'];
 
-  dataSource:any;
-  
+  dataSource: any;
 
   book = {
     id: '',
@@ -24,27 +41,24 @@ export class MBookComponent implements OnInit {
     name: '',
     qty: '',
   };
-  
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
 
-
   constructor(
     private bookService: BookService,
     private cdr: ChangeDetectorRef,
-    private _liveAnnouncer: LiveAnnouncer
+    private _liveAnnouncer: LiveAnnouncer,
+    public dialog: MatDialog
   ) {}
-
-  
 
   ngOnInit(): void {
     this.bookService.fetchAll().subscribe(
       (e: any) => {
-        this.dataSource=new MatTableDataSource<any>(e);
-        
+        this.dataSource = new MatTableDataSource<any>(e);
+
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.cdr.detectChanges();
@@ -54,6 +68,18 @@ export class MBookComponent implements OnInit {
 
         console.log(err);
       }
+    );
+  }
+
+  deleteBook(id:any){
+    this.bookService.delete(id).subscribe(e=>{
+      console.log(e);
+      this.ngOnInit();
+    },
+    err=>{
+      console.table(err);
+      
+    }
     );
   }
 
@@ -70,4 +96,46 @@ export class MBookComponent implements OnInit {
     }
   }
 
+  openEditBookDialog(book: any) {
+    const dialogRef = this.dialog.open(EditBook, {
+      width: '400px',
+      data: book,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.ngOnInit();
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+}
+
+@Component({
+  selector: 'edit-book',
+  templateUrl: 'edit-book.html',
+})
+export class EditBook implements OnInit {
+
+  book: any;
+
+  constructor(
+    private bookService: BookService,
+    public dialogRef: MatDialogRef<EditBook>,
+    @Inject(MAT_DIALOG_DATA) public data: EditBookDialogData
+  ) {}
+
+  ngOnInit(): void {
+    this.book = this.data;
+  }
+
+  editBook() {
+    this.bookService.update(this.book).subscribe(
+      (e) => {
+        console.table(e);
+        this.dialogRef.close();
+      },
+      (err) => {
+        console.table(err);
+      }
+    );
+  }
 }
