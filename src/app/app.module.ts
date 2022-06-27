@@ -28,6 +28,9 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin-profile.component';
+import { MBookComponent } from './private/admin-dashb/m-book/m-book.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin
     StudDashbComponent,
     StudProfileComponent,
     AdminProfileComponent,
+    MBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,9 @@ import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin
     MatInputModule,
     MatCardModule,
     HttpClientModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
