@@ -28,7 +28,7 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin-profile.component';
-import { EditBook, MBookComponent } from './private/admin-dashb/m-book/m-book.component';
+import { AddBook, EditBook, MBookComponent } from './private/admin-dashb/m-book/m-book.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -51,7 +51,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     StudProfileComponent,
     AdminProfileComponent,
     MBookComponent,
-    EditBook
+    EditBook,
+    AddBook
   ],
   imports: [
     BrowserModule,

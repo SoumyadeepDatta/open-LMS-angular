@@ -96,6 +96,17 @@ export class MBookComponent implements OnInit {
     }
   }
 
+  openAddBookDialog() {
+    const dialogRef = this.dialog.open(AddBook, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.ngOnInit();
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   openEditBookDialog(book: any) {
     const dialogRef = this.dialog.open(EditBook, {
       width: '400px',
@@ -136,6 +147,35 @@ export class EditBook implements OnInit {
       (err) => {
         console.table(err);
       }
+    );
+  }
+}
+
+
+
+@Component({
+  selector: 'add-book',
+  templateUrl: 'add-book.html',
+})
+export class AddBook {
+
+  book = {
+    id: '',
+    isbn: '',
+    name: '',
+    qty: '',
+  };
+
+  constructor(private bookService: BookService,public dialogRef: MatDialogRef<AddBook>){}
+
+  addBook(){
+    this.bookService.add(this.book).subscribe(e=>{
+      console.table(e);
+      this.dialogRef.close();
+    },
+    err=>{
+      console.table(err);
+    }
     );
   }
 }
