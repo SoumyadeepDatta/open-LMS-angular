@@ -33,6 +33,8 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MStudComponent } from './private/admin-dashb/m-stud/m-stud.component';
+import { LibraryComponent } from './private/stud-dashb/library/library.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     AdminProfileComponent,
     MBookComponent,
     EditBook,
-    AddBook
+    AddBook,
+    MStudComponent,
+    LibraryComponent
   ],
   imports: [
     BrowserModule,

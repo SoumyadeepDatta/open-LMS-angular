@@ -35,12 +35,12 @@ export class MBookComponent implements OnInit {
 
   dataSource: any;
 
-  book = {
-    id: '',
-    isbn: '',
-    name: '',
-    qty: '',
-  };
+  // book = {
+  //   id: '',
+  //   isbn: '',
+  //   name: '',
+  //   qty: '',
+  // };
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;

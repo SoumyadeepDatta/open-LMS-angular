@@ -53,5 +53,9 @@ export class StudentService {
     
   }
 
+  fetchAll(){
+    return this.http.get(`http://localhost:8080/student/fetchAll`);
+  }
+
 
 }
