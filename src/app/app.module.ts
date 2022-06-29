@@ -35,6 +35,8 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MStudComponent } from './private/admin-dashb/m-stud/m-stud.component';
 import { LibraryComponent } from './private/stud-dashb/library/library.component';
+import { LibAllComponent } from './private/stud-dashb/library/lib-all/lib-all.component';
+import { LibIssuedComponent } from './private/stud-dashb/library/lib-issued/lib-issued.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { LibraryComponent } from './private/stud-dashb/library/library.component
     EditBook,
     AddBook,
     MStudComponent,
-    LibraryComponent
+    LibraryComponent,
+    LibAllComponent,
+    LibIssuedComponent
   ],
   imports: [
     BrowserModule,
