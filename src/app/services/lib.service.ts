@@ -16,4 +16,18 @@ export class LibService {
   getIssuedBooks(sid:any){
     return this.http.get(`http://localhost:8080/issuance/issuedBooks/${sid}`);
   }
+
+  returnBook(sid:any,bid:any){
+    return this.http.delete(`http://localhost:8080/return/returnBook`,{params:{
+      sid:sid,
+      bid:bid
+    }});
+  }
+
+  findIssuanceBySidAndBid(sid:any,bid:any){
+    return this.http.get(`http://localhost:8080/issuance/findIssuance`,{params:{
+      sid:sid,
+      bid:bid
+    }})
+  }
 }

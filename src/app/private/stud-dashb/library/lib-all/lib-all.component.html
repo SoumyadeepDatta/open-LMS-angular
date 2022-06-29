@@ -1,7 +1,11 @@
 <!-- <p>m-book works!</p>
 {{books | json}} -->
 
-<div class="container my-5">
+<div class="container mb-5">
+
+  <div class="container my-3">
+    <button (click)="ngOnInit()" mat-icon-button class="mat-elevation-z8"><mat-icon>refresh</mat-icon></button>
+  </div>
   
   <table
     mat-table
@@ -61,7 +65,8 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let book">
-        <button (click)="issueBooks(book.id)" mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
+        <button *ngIf="canIssue(book.id)" (click)="issueBooks(book.id)" mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
+        <button *ngIf="!canIssue(book.id)" mat-icon-button><mat-icon>block</mat-icon></button>
         <!-- <button mat-icon-button color="accent">
           <mat-icon>delete</mat-icon>
         </button> -->

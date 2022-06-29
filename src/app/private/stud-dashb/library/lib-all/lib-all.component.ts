@@ -59,6 +59,10 @@ export class LibAllComponent implements OnInit {
     );
   }
 
+  canIssue(bid:any):boolean{
+    return true;
+  }
+
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
     // multiple language, you would internationalize these strings.
@@ -79,6 +83,7 @@ export class LibAllComponent implements OnInit {
 
         this.libService.issueBook(this.issuance).subscribe(
           (e:any) => {
+            this.ngOnInit();
             console.table(e);
           },
           (err) => {

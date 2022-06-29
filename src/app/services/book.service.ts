@@ -20,6 +20,10 @@ export class BookService {
     return this.http.put(`http://localhost:8080/book/update`,b);
   }
 
+  fetch(bid:any) {
+    return this.http.get(`http://localhost:8080/book/fetch/${bid}`);
+  }
+
   delete(id:any){
     return this.http.delete(`http://localhost:8080/book/delete/${id}`);
   }

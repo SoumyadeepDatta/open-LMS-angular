@@ -62,7 +62,15 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let book">
-          <button mat-icon-button><mat-icon>shopping_cart</mat-icon></button>
+          <div *ngIf="!book.approved">
+            <button mat-icon-button><mat-icon>access_time</mat-icon></button>
+            <button (click)="cancelIssuance(book)" mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
+          </div>
+          <div *ngIf="book.approved">
+            
+            <button mat-icon-button color="primary"><mat-icon>check_circle</mat-icon></button>
+          </div>
+          
           <!-- <button mat-icon-button color="accent">
             <mat-icon>delete</mat-icon>
           </button> -->

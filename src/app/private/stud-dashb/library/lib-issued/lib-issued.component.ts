@@ -31,6 +31,7 @@ export class LibIssuedComponent implements OnInit {
   constructor(
     private studentService:StudentService,
     private libService:LibService,
+    private bookService:BookService,
     private cdr: ChangeDetectorRef,
     private _liveAnnouncer: LiveAnnouncer,
     public dialog: MatDialog
@@ -58,6 +59,43 @@ export class LibIssuedComponent implements OnInit {
 
 
     
+  }
+
+  //1
+  cancelIssuance(book:any){
+    this.studentService.fetchStudent().subscribe((e:any)=>{
+      this.libService.findIssuanceBySidAndBid(e.id,book.id).subscribe((e:any)=>{
+        console.table(e);
+        if(e.approved==false){
+          this.libService.returnBook(e.sid,e.bid).subscribe(e=>{
+            console.log(e);
+            this.ngOnInit();
+          });
+        }
+      });
+    });
+  }
+
+
+  //2
+  // fetchBookDetailsForIssuance(sid:any,bid:any){
+  //   this.bookService.fetch(bid).subscribe(e=>{
+  //     this.fetchIssuanceDetails(sid,bid);
+  //   });
+  // }
+
+  //2
+  fetchIssuanceDetails(sid:any,bid:any){
+    this.libService.findIssuanceBySidAndBid(sid,bid).subscribe(e=>{
+      console.table(e);
+    });
+  }
+
+  deleteIssuanceDetails(sid:any,bid:any){
+    this.libService.returnBook(sid,bid).subscribe(e=>{
+      console.log(e);
+      this.ngOnInit();
+    });
   }
 
   fetchIssuedBooks(sid:any){
