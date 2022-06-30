@@ -20,7 +20,7 @@
         >
           ID.
         </th>
-        <td mat-cell *matCellDef="let book">{{ book.id }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.book.id }}</td>
       </ng-container>
   
       <ng-container matColumnDef="name">
@@ -32,7 +32,7 @@
         >
           Name.
         </th>
-        <td mat-cell *matCellDef="let book">{{ book.name }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.book.name }}</td>
       </ng-container>
   
       <ng-container matColumnDef="isbn">
@@ -44,7 +44,7 @@
         >
           ISBN.
         </th>
-        <td mat-cell *matCellDef="let book">{{ book.isbn }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.book.isbn }}</td>
       </ng-container>
   
       <ng-container matColumnDef="qty">
@@ -56,17 +56,17 @@
         >
           Qty.
         </th>
-        <td mat-cell *matCellDef="let book">{{ book.qty }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.book.qty }}</td>
       </ng-container>
   
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let book">
-          <div *ngIf="!book.approved">
+        <mat-cell *matCellDef="let details">
+          <div *ngIf="!details.approved">
             <button mat-icon-button><mat-icon>access_time</mat-icon></button>
-            <button (click)="cancelIssuance(book)" mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
+            <button (click)="cancelIssuance(details.book)" mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
           </div>
-          <div *ngIf="book.approved">
+          <div *ngIf="details.approved">
             
             <button mat-icon-button color="primary"><mat-icon>check_circle</mat-icon></button>
           </div>

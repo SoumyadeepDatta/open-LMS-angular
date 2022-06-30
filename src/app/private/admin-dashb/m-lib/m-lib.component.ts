@@ -13,9 +13,14 @@ import { LibService } from 'src/app/services/lib.service';
 })
 export class MLibComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'book', 'approved', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'book', 'actions'];
 
   dataSource: any;
+
+  issuance={
+    sid:'',
+    bid:''
+  }
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -50,6 +55,19 @@ export class MLibComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  approve(sid:any,bid:any){
+    this.issuance.sid=sid;
+    this.issuance.bid=bid;
+
+    this.libService.approveIssuance(this.issuance).subscribe((e:any)=>{
+      console.log(e);
+      this.ngOnInit();
+    },
+    err=>{
+      console.table(err);
+    });
   }
 
 }

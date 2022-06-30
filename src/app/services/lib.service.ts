@@ -38,4 +38,10 @@ export class LibService {
       bid:bid
     }})
   }
+
+
+  approveIssuance(issuance:any){
+    return this.http.put(`http://localhost:8080/issuance/approve`,issuance);
+  }
+
 }

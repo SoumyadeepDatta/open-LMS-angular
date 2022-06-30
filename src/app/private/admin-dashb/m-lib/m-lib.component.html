@@ -45,7 +45,7 @@
         <td mat-cell *matCellDef="let details">{{ details.book.name }}</td>
       </ng-container>
   
-      <ng-container matColumnDef="approved">
+      <!-- <ng-container matColumnDef="approved">
         <th
           mat-header-cell
           *matHeaderCellDef
@@ -55,13 +55,20 @@
           Approved.
         </th>
         <td mat-cell *matCellDef="let details">{{ details.approved }}</td>
-      </ng-container>
+      </ng-container> -->
   
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let details">
-          <button  mat-icon-button><mat-icon>edit</mat-icon></button>
-          <button  mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
+          <div *ngIf="details.approved">
+            <button mat-icon-button color="primary"><mat-icon>check_circle</mat-icon></button>
+          <button mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
+          </div>
+          
+          <div *ngIf="!details.approved">
+            <button (click)="approve(details.student.id,details.book.id)" mat-icon-button><mat-icon>cloud_upload</mat-icon></button>
+          </div>
+          
         </mat-cell>
         
       </ng-container>

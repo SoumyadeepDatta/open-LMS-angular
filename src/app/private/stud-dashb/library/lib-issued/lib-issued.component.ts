@@ -39,12 +39,18 @@ export class LibIssuedComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.studentService.fetchStudent().subscribe((e:any)=>{
+    this.studentService.fetchStudent().subscribe((s:any)=>{
       // this.sid=e.id;
       console.log("student fetched");
-      console.log(e.id);
+      console.log(s.id);
       
-      this.fetchIssuedBooks(e.id);
+      this.libService.getIssuedBooks(s.id).subscribe((e:any)=>{
+        this.dataSource = new MatTableDataSource<any>(e);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.cdr.detectChanges();
+      });
       
     },
     err=>{
