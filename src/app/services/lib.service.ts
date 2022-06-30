@@ -12,6 +12,14 @@ export class LibService {
     return this.http.post(`http://localhost:8080/issuance/issueBook`,issuance);
   }
 
+  canIssue(issuance:any){
+    return this.http.post(`http://localhost:8080/issuance/canIssue`,issuance);
+  }
+
+  getAllDetails(){
+    return this.http.get(`http://localhost:8080/issuance/allIssuanceDetails`);
+  }
+
   // get the list of books borrowed by a student with id == sid
   getIssuedBooks(sid:any){
     return this.http.get(`http://localhost:8080/issuance/issuedBooks/${sid}`);

@@ -37,6 +37,7 @@ import { MStudComponent } from './private/admin-dashb/m-stud/m-stud.component';
 import { LibraryComponent } from './private/stud-dashb/library/library.component';
 import { LibAllComponent } from './private/stud-dashb/library/lib-all/lib-all.component';
 import { LibIssuedComponent } from './private/stud-dashb/library/lib-issued/lib-issued.component';
+import { MLibComponent } from './private/admin-dashb/m-lib/m-lib.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { LibIssuedComponent } from './private/stud-dashb/library/lib-issued/lib-
     MStudComponent,
     LibraryComponent,
     LibAllComponent,
-    LibIssuedComponent
+    LibIssuedComponent,
+    MLibComponent
   ],
   imports: [
     BrowserModule,

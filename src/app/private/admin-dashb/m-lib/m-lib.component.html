@@ -1,9 +1,7 @@
 <div class="container mb-5">
-    
-  <div class="container my-3">
-    <button mat-icon-button class="mat-elevation-z8"><mat-icon>refresh</mat-icon></button>
-  </div>
-  
+    <div class="container my-3">
+      <button mat-icon-button class="mat-elevation-z8"><mat-icon>refresh</mat-icon></button>
+    </div>
     <table
       mat-table
       [dataSource]="dataSource"
@@ -20,7 +18,7 @@
         >
           ID.
         </th>
-        <td mat-cell *matCellDef="let student">{{ student.id }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.id }}</td>
       </ng-container>
   
       <ng-container matColumnDef="name">
@@ -32,51 +30,38 @@
         >
           Name.
         </th>
-        <td mat-cell *matCellDef="let student">{{ student.name }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.student.name }}</td>
       </ng-container>
   
-      <ng-container matColumnDef="username">
+      <ng-container matColumnDef="book">
         <th
           mat-header-cell
           *matHeaderCellDef
           mat-sort-header
           sortActionDescription="Sort by number"
         >
-          Username.
+          Book.
         </th>
-        <td mat-cell *matCellDef="let student">{{ student.username }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.book.name }}</td>
       </ng-container>
   
-      <ng-container matColumnDef="email">
+      <ng-container matColumnDef="approved">
         <th
           mat-header-cell
           *matHeaderCellDef
           mat-sort-header
           sortActionDescription="Sort by number"
         >
-          Email.
+          Approved.
         </th>
-        <td mat-cell *matCellDef="let student">{{ student.email }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="sem">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          sortActionDescription="Sort by number"
-        >
-          Sem.
-        </th>
-        <td mat-cell *matCellDef="let student">{{ student.sem }}</td>
+        <td mat-cell *matCellDef="let details">{{ details.approved }}</td>
       </ng-container>
   
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let student">
-          <button  mat-icon-button><mat-icon>report</mat-icon></button>
+        <mat-cell *matCellDef="let details">
+          <button  mat-icon-button><mat-icon>edit</mat-icon></button>
           <button  mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
-          <button  mat-icon-button color="primary"><mat-icon>visibility</mat-icon></button>
         </mat-cell>
         
       </ng-container>

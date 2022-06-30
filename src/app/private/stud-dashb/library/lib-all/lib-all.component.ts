@@ -8,19 +8,28 @@ import { BookService } from 'src/app/services/book.service';
 import { LibService } from 'src/app/services/lib.service';
 import { StudentService } from 'src/app/services/student.service';
 
+
+export interface BookTableRow{
+  id: number;
+  name: string;
+  isbn: number;
+  qty: number;
+  canIssue:boolean;
+}
+
 @Component({
   selector: 'app-lib-all',
   templateUrl: './lib-all.component.html',
   styleUrls: ['./lib-all.component.css'],
 })
 export class LibAllComponent implements OnInit {
-  books = [];
+  
+  book!: BookTableRow;
+
 
   displayedColumns: string[] = ['id', 'name', 'isbn', 'qty', 'actions'];
 
   dataSource: any;
-
-  // sid:any;
 
   issuance = {
     id: '',
@@ -45,7 +54,10 @@ export class LibAllComponent implements OnInit {
   ngOnInit(): void {
     this.bookService.fetchAll().subscribe(
       (e: any) => {
-        this.dataSource = new MatTableDataSource<any>(e);
+        this.dataSource = new MatTableDataSource<any>(e.map((x:any)=>{
+          this.book=x;
+          return this.book;
+        }));
 
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -59,9 +71,7 @@ export class LibAllComponent implements OnInit {
     );
   }
 
-  canIssue(bid:any):boolean{
-    return true;
-  }
+
 
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
@@ -75,6 +85,7 @@ export class LibAllComponent implements OnInit {
     }
   }
 
+  // later move it to a dialouge box
   issueBooks(bid: any) {
     this.studentService.fetchStudent().subscribe(
       (e: any) => {
