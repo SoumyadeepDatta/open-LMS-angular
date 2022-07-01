@@ -1,10 +1,18 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { StudentService } from 'src/app/services/student.service';
+
+export interface ViewStudentDialogData {
+  id: number;
+  name: string;
+  username: string;
+  email:string
+  sem:number
+}
 
 @Component({
   selector: 'app-m-stud',
@@ -60,6 +68,43 @@ export class MStudComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+
+  openViewStudentDialog(student: any) {
+    const dialogRef = this.dialog.open(ViewStudent, {
+      width: '400px',
+      data: student,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // this.ngOnInit();
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+
+}
+
+
+@Component({
+  selector: 'view-student',
+  templateUrl: 'view-student.html',
+})
+export class ViewStudent implements OnInit{
+
+  student:any;
+
+
+  constructor(
+    public dialogRef: MatDialogRef<ViewStudent>,
+    @Inject(MAT_DIALOG_DATA) public data: ViewStudentDialogData
+  ){}
+
+
+  ngOnInit(): void {
+    this.student=this.data;
   }
 
 }

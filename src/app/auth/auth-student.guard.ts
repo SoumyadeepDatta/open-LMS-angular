@@ -42,6 +42,7 @@ export class AuthStudentGuard implements CanActivate {
         (err) => {
           this.activate = false;
           console.error(err);
+          this.studentService.logoutStudent();
           this.router.navigate(['login']);
         }
       );

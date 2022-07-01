@@ -33,7 +33,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
-import { MStudComponent } from './private/admin-dashb/m-stud/m-stud.component';
+import { MStudComponent, ViewStudent } from './private/admin-dashb/m-stud/m-stud.component';
 import { LibraryComponent } from './private/stud-dashb/library/library.component';
 import { LibAllComponent } from './private/stud-dashb/library/lib-all/lib-all.component';
 import { LibIssuedComponent } from './private/stud-dashb/library/lib-issued/lib-issued.component';
@@ -62,7 +62,8 @@ import { MLibComponent } from './private/admin-dashb/m-lib/m-lib.component';
     LibraryComponent,
     LibAllComponent,
     LibIssuedComponent,
-    MLibComponent
+    MLibComponent,
+    ViewStudent
   ],
   imports: [
     BrowserModule,

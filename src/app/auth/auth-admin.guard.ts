@@ -42,6 +42,7 @@ export class AuthAdminGuard implements CanActivate {
         (err) => {
           this.activate = false;
           console.error(err);
+          this.adminService.logoutAdmin();
           this.router.navigate(['login']);
         }
       );

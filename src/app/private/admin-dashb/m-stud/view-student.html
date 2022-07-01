@@ -1,0 +1,85 @@
+<h1 mat-dialog-title>{{ student.name }}</h1>
+<div mat-dialog-content class="mat-typography">
+
+
+
+
+    <!-- <mat-card class="example-card"> -->
+        
+          <div>
+            <mat-card-title-group>
+                <mat-card-subtitle>{{student.id}}</mat-card-subtitle>
+                <img
+                  mat-card-sm-image
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                  style="border-radius: 50%; height: 100px; width: 100px"
+                />
+              </mat-card-title-group>
+              <mat-card-content>
+                <mat-list role="list">
+                  <mat-list-item role="listitem">
+                    <mat-icon>person</mat-icon>&nbsp; {{ student.username }}
+                  </mat-list-item>
+                  <mat-list-item role="listitem">
+                    <mat-icon> email</mat-icon>&nbsp; {{ student.email }}
+                  </mat-list-item>
+      
+                  <mat-divider></mat-divider>
+                  <mat-list-item role="listitem">
+                    <b>Semester :&nbsp;</b> {{ student.sem }}
+                  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+          </div>
+        
+      <!-- </mat-card> -->
+
+
+
+
+
+
+
+
+
+    <!-- <div class="row">
+        <div class="col-lg-6">
+            <h3><b>ID</b>&nbsp;{{student.id}}</h3>
+        </div>
+        <div class="col-lg-6">
+            <h3><b>Name</b>&nbsp;{{student.name}}</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h3><mat-icon>person</mat-icon>&nbsp;{{student.username}}</h3>
+        </div>
+        <div class="col-lg-6">
+            <h3><mat-icon> email</mat-icon>&nbsp;{{student.email}}</h3>
+        </div>
+    </div>
+
+    <div class="row-">
+        <div class="col-lg6">
+            <h3><b>Sem</b>&nbsp;{{student.sem}}</h3>
+        </div>
+    </div>
+
+
+    <mat-list role="list">
+        <mat-list-item role="listitem">
+            <h3><mat-icon> email</mat-icon>&nbsp;{{student.email}}</h3>
+        </mat-list-item>
+    </mat-list> -->
+    
+    
+    
+    
+    
+    
+    <!-- {{student|json}} -->
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
