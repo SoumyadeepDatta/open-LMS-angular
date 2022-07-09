@@ -50,4 +50,9 @@ export class AdminService {
     this.deleteLoggedUserLocaly();
     
   }
+
+  update(admin:any){
+    return this.http.put(`http://localhost:8080/admin/update`,admin);
+  }
+
 }

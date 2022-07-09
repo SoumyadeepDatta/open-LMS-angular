@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Edit Profile</h1>
+<div mat-dialog-content>
+
+    <form action="">
+        <div class="row">
+            <mat-form-field>
+                <input 
+                [(ngModel)]="admin.name"
+                name="adminName"
+                placeholder="Name" type="text" matInput required />
+              </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <input 
+                [(ngModel)]="admin.email"
+                name="email"
+                placeholder="Email" type="email" matInput required />
+              </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <input 
+                [(ngModel)]="admin.username"
+                name="username"
+                placeholder="Username" type="text" matInput required />
+              </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <input 
+                [(ngModel)]="admin.role"
+                name="role"
+                placeholder="role" type="text" matInput required />
+              </mat-form-field>
+        </div>
+        
+    </form>
+
+    
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="updateAdmin()" mat-raised-button color="primary">Save</button>
+</div>

@@ -13,7 +13,7 @@ import { LibService } from 'src/app/services/lib.service';
 })
 export class MLibComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'book', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'book', 'issue', 'approve', 'actions'];
 
   dataSource: any;
 
@@ -67,6 +67,13 @@ export class MLibComponent implements OnInit {
     },
     err=>{
       console.table(err);
+    });
+  }
+
+  deleteIssuance(sid:any,bid:any){
+    this.libService.returnBook(sid,bid).subscribe((e:any)=>{
+      console.table(e);
+      this.ngOnInit();
     });
   }
 

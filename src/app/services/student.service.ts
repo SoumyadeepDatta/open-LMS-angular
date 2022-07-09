@@ -57,5 +57,9 @@ export class StudentService {
     return this.http.get(`http://localhost:8080/student/fetchAll`);
   }
 
+  update(student:any){
+    return this.http.put(`http://localhost:8080/student/update`,student);
+  }
+
 
 }

@@ -23,11 +23,11 @@ import { StudentRegComponent } from './public/register/student-reg/student-reg.c
 import { PrivateComponent } from './private/private.component';
 import { AdminDashbComponent } from './private/admin-dashb/admin-dashb.component';
 import { StudDashbComponent } from './private/stud-dashb/stud-dashb.component';
-import { StudProfileComponent } from './private/stud-dashb/stud-profile/stud-profile.component';
+import { EditStudentProfile, StudProfileComponent } from './private/stud-dashb/stud-profile/stud-profile.component';
 import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
-import { AdminProfileComponent } from './private/admin-dashb/admin-profile/admin-profile.component';
+import { AdminProfileComponent, EditAdminProfile } from './private/admin-dashb/admin-profile/admin-profile.component';
 import { AddBook, EditBook, MBookComponent } from './private/admin-dashb/m-book/m-book.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -63,7 +63,9 @@ import { MLibComponent } from './private/admin-dashb/m-lib/m-lib.component';
     LibAllComponent,
     LibIssuedComponent,
     MLibComponent,
-    ViewStudent
+    ViewStudent,
+    EditStudentProfile,
+    EditAdminProfile
   ],
   imports: [
     BrowserModule,
