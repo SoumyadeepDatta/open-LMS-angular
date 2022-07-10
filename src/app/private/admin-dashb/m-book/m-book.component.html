@@ -36,6 +36,30 @@
       <td mat-cell *matCellDef="let book">{{ book.name }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="auther">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by number"
+      >
+        Auther.
+      </th>
+      <td mat-cell *matCellDef="let book">{{ book.auther }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="publisher">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by number"
+      >
+      Publisher.
+      </th>
+      <td mat-cell *matCellDef="let book">{{ book.publisher }}</td>
+    </ng-container>
+
     <ng-container matColumnDef="isbn">
       <th
         mat-header-cell

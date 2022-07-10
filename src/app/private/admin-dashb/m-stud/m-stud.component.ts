@@ -73,7 +73,7 @@ export class MStudComponent implements OnInit {
 
   openViewStudentDialog(student: any) {
     const dialogRef = this.dialog.open(ViewStudent, {
-      width: '400px',
+      width: '300px',
       data: student,
     });
 

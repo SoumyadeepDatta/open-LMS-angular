@@ -1,34 +1,67 @@
 <h1 mat-dialog-title>Add Book</h1>
 <div mat-dialog-content>
-
-    <form action="">
-        <div class="row">
-            <mat-form-field>
-                <input 
-                [(ngModel)]="book.name"
-                name="bookName"
-                placeholder="Name" type="text" matInput required />
-              </mat-form-field>
-        </div>
-        <div class="row">
-            <mat-form-field>
-                <input 
-                [(ngModel)]="book.isbn"
-                name="isbn"
-                placeholder="ISBN" type="number" matInput required />
-              </mat-form-field>
-        </div>
-        <div class="row">
-            <mat-form-field>
-                <input 
-                [(ngModel)]="book.qty"
-                name="qty"
-                placeholder="Qty" type="number" matInput required />
-              </mat-form-field>
-        </div>
-    </form>
-
-    
+  <form action="">
+    <div class="row">
+      <mat-form-field>
+        <input
+          [(ngModel)]="book.name"
+          name="bookName"
+          placeholder="Name"
+          type="text"
+          matInput
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input
+          [(ngModel)]="book.auther"
+          name="auther"
+          placeholder="Auther"
+          type="text"
+          matInput
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input
+          [(ngModel)]="book.publisher"
+          name="publisher"
+          placeholder="Publisher"
+          type="text"
+          matInput
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input
+          [(ngModel)]="book.isbn"
+          name="isbn"
+          placeholder="ISBN"
+          type="number"
+          matInput
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input
+          [(ngModel)]="book.qty"
+          name="qty"
+          placeholder="Qty"
+          type="number"
+          matInput
+          required
+        />
+      </mat-form-field>
+    </div>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>

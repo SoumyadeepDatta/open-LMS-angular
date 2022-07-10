@@ -19,6 +19,8 @@ import {
 export interface EditBookDialogData {
   id: number;
   name: string;
+  auther:String;
+  publisher:String;
   isbn: number;
   qty: number;
 }
@@ -31,7 +33,7 @@ export interface EditBookDialogData {
 export class MBookComponent implements OnInit {
   books = [];
 
-  displayedColumns: string[] = ['id', 'name', 'isbn', 'qty', 'actions'];
+  displayedColumns: string[] = ['id', 'name','auther', 'publisher', 'isbn', 'qty', 'actions'];
 
   dataSource: any;
 
@@ -163,7 +165,9 @@ export class AddBook {
     id: '',
     isbn: '',
     name: '',
-    qty: '',
+    auther:'',
+    publisher:'',
+    qty: ''
   };
 
   constructor(private bookService: BookService,public dialogRef: MatDialogRef<AddBook>){}

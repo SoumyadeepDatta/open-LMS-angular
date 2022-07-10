@@ -17,7 +17,7 @@ export class LibIssuedComponent implements OnInit {
 
   // books = [];
 
-  displayedColumns: string[] = ['id', 'name', 'isbn', 'qty', 'issue', 'approve', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'auther', 'qty', 'issue', 'approve', 'actions'];
 
   // sid:any;
 

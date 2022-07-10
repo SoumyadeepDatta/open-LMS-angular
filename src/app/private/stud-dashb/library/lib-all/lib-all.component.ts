@@ -27,7 +27,7 @@ export class LibAllComponent implements OnInit {
   book!: BookTableRow;
 
 
-  displayedColumns: string[] = ['id', 'name', 'isbn', 'qty', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'auther', 'publisher', 'isbn', 'qty', 'actions'];
 
   dataSource: any;
 

@@ -1,10 +1,19 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { LibService } from 'src/app/services/lib.service';
+
+export interface ViewStudentIssueDetailsDialogData {
+  id: number;
+  student: any;
+  book: any;
+  issueDate:string;
+  approveDate:string;
+  approved:boolean;
+}
 
 @Component({
   selector: 'app-m-lib',
@@ -13,7 +22,7 @@ import { LibService } from 'src/app/services/lib.service';
 })
 export class MLibComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'book', 'issue', 'approve', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'book', 'auther', 'issue', 'approve', 'actions'];
 
   dataSource: any;
 
@@ -75,6 +84,38 @@ export class MLibComponent implements OnInit {
       console.table(e);
       this.ngOnInit();
     });
+  }
+
+  openViewStudentIssueDetailsDialog(details: any) {
+    const dialogRef = this.dialog.open(ViewStudentIssueDetails, {
+      width: '400px',
+      data: details,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // this.ngOnInit();
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+}
+
+@Component({
+  selector: 'view-student-issue-details',
+  templateUrl: 'view-student-issue-details.html',
+})
+export class ViewStudentIssueDetails implements OnInit{
+
+  details:any;
+
+
+  constructor(
+    public dialogRef: MatDialogRef<ViewStudentIssueDetails>,
+    @Inject(MAT_DIALOG_DATA) public data: ViewStudentIssueDetailsDialogData
+  ){}
+
+
+  ngOnInit(): void {
+    this.details=this.data;
   }
 
 }

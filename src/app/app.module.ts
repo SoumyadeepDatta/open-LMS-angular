@@ -37,7 +37,8 @@ import { MStudComponent, ViewStudent } from './private/admin-dashb/m-stud/m-stud
 import { LibraryComponent } from './private/stud-dashb/library/library.component';
 import { LibAllComponent } from './private/stud-dashb/library/lib-all/lib-all.component';
 import { LibIssuedComponent } from './private/stud-dashb/library/lib-issued/lib-issued.component';
-import { MLibComponent } from './private/admin-dashb/m-lib/m-lib.component';
+import { MLibComponent, ViewStudentIssueDetails } from './private/admin-dashb/m-lib/m-lib.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MLibComponent } from './private/admin-dashb/m-lib/m-lib.component';
     MLibComponent,
     ViewStudent,
     EditStudentProfile,
-    EditAdminProfile
+    EditAdminProfile,
+    ViewStudentIssueDetails
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,8 @@ import { MLibComponent } from './private/admin-dashb/m-lib/m-lib.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
