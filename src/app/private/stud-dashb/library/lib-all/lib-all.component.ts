@@ -1,6 +1,6 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,9 +12,10 @@ import { StudentService } from 'src/app/services/student.service';
 export interface BookTableRow{
   id: number;
   name: string;
+  auther:string;
+  publisher:string;
   isbn: number;
   qty: number;
-  canIssue:boolean;
 }
 
 @Component({
@@ -31,11 +32,7 @@ export class LibAllComponent implements OnInit {
 
   dataSource: any;
 
-  issuance = {
-    id: '',
-    sid: '',
-    bid: '',
-  };
+  
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -44,8 +41,6 @@ export class LibAllComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private studentService: StudentService,
-    private libService: LibService,
     private cdr: ChangeDetectorRef,
     private _liveAnnouncer: LiveAnnouncer,
     public dialog: MatDialog
@@ -86,7 +81,56 @@ export class LibAllComponent implements OnInit {
   }
 
   // later move it to a dialouge box
-  issueBooks(bid: any) {
+  
+
+  openIssueBookDialog(book:any){
+    const dialogRef = this.dialog.open(IssueBook, {
+      width: '300px',
+      data: book,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.ngOnInit();
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+}
+
+
+@Component({
+  selector: 'issue-book',
+  templateUrl: 'issue-book.html',
+})
+export class IssueBook implements OnInit{
+
+  book:any;
+
+  issuance = {
+    id: '',
+    sid: '',
+    bid: '',
+  };
+
+  constructor(
+    public dialogRef: MatDialogRef<IssueBook>,
+    @Inject(MAT_DIALOG_DATA) public data: BookTableRow,
+    private studentService: StudentService,
+    private libService: LibService
+  ){}
+  
+  ngOnInit(): void {
+      this.book=this.data;
+  }
+
+  canIssue(qty:any):boolean{
+    if(qty==0){
+      return false;
+    }
+    return true;
+  }
+
+  issueBook(bid: any) {
     this.studentService.fetchStudent().subscribe(
       (e: any) => {
         this.issuance.sid = e.id;
@@ -96,6 +140,7 @@ export class LibAllComponent implements OnInit {
           (e:any) => {
             this.ngOnInit();
             console.table(e);
+            this.dialogRef.close();
           },
           (err) => {
             console.table(err);
@@ -112,4 +157,5 @@ export class LibAllComponent implements OnInit {
       }
     );
   }
+
 }

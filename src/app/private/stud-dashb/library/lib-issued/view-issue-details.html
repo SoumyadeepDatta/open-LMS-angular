@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Details</h1>
+<div mat-dialog-content class="mat-typography">
+
+    <!-- {{details|json}} -->
+    <div class="row">
+        
+        <div class="col">
+            <ul>
+                <li>Book Id: {{details.book.id}}</li>
+                <li>ISBN: {{details.book.isbn}}</li>
+                <li>{{details.book.name}}</li>
+                <li>Auther: {{details.book.auther}}</li>
+                <li>Publisher: {{details.book.publisher}}</li>
+                <li>Qty left: {{details.book.qty}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div class="row mt-3">
+        <div class="col">
+            <ul>
+                <li>Issued: {{details.issueDate}}</li>
+                <li>Approved: {{details.approveDate}}</li>
+                <!-- <li>{{details.approved}}</li> -->
+            </ul>
+        </div>
+    </div>
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>

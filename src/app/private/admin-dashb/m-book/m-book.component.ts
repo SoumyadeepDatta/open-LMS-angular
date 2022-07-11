@@ -16,7 +16,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 
-export interface EditBookDialogData {
+export interface BookDialogData {
   id: number;
   name: string;
   auther:String;
@@ -73,6 +73,13 @@ export class MBookComponent implements OnInit {
     );
   }
 
+  qtyWarning(qty:any):boolean{
+    if(qty<=5){
+      return true;
+    }
+    return false;
+  }
+
   deleteBook(id:any){
     this.bookService.delete(id).subscribe(e=>{
       console.log(e);
@@ -96,6 +103,18 @@ export class MBookComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  openViewBookDialog(book:any) {
+    const dialogRef = this.dialog.open(ViewBook, {
+      width: '300px',
+      data: book
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // this.ngOnInit();
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   openAddBookDialog() {
@@ -133,7 +152,7 @@ export class EditBook implements OnInit {
   constructor(
     private bookService: BookService,
     public dialogRef: MatDialogRef<EditBook>,
-    @Inject(MAT_DIALOG_DATA) public data: EditBookDialogData
+    @Inject(MAT_DIALOG_DATA) public data: BookDialogData
   ) {}
 
   ngOnInit(): void {
@@ -182,4 +201,24 @@ export class AddBook {
     }
     );
   }
+}
+
+
+@Component({
+  selector: 'view-book',
+  templateUrl: 'view-book.html',
+})
+export class ViewBook implements OnInit{
+
+  book:any;
+
+  constructor(
+    public dialogRef: MatDialogRef<EditBook>,
+    @Inject(MAT_DIALOG_DATA) public data: BookDialogData
+  ){}
+
+  ngOnInit(): void {
+    this.book=this.data;
+  }
+
 }

@@ -1,12 +1,21 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { BookService } from 'src/app/services/book.service';
 import { LibService } from 'src/app/services/lib.service';
 import { StudentService } from 'src/app/services/student.service';
+
+export interface ViewIssueDetailsDialogData {
+  id: number;
+  student: any;
+  book: any;
+  issueDate:string;
+  approveDate:string;
+  approved:boolean;
+}
 
 @Component({
   selector: 'app-lib-issued',
@@ -131,6 +140,39 @@ export class LibIssuedComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  openViewIssueDetailsDialog(details:any){
+    const dialogRef = this.dialog.open(ViewIssueDetails, {
+      width: '300px',
+      data: details,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // this.ngOnInit();
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+}
+
+@Component({
+  selector: 'view-issue-details',
+  templateUrl: 'view-issue-details.html',
+})
+export class ViewIssueDetails implements OnInit{
+  
+  details:any;
+
+
+  constructor(
+    public dialogRef: MatDialogRef<ViewIssueDetails>,
+    @Inject(MAT_DIALOG_DATA) public data: ViewIssueDetailsDialogData
+  ){}
+
+
+  ngOnInit(): void {
+    this.details=this.data;
   }
 
 }

@@ -87,8 +87,12 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let book">
+        <button (click)="openViewBookDialog(book)" mat-icon-button color="primary"><mat-icon>visibility</mat-icon></button>
         <button (click)="openEditBookDialog(book)" mat-icon-button><mat-icon>edit</mat-icon></button>
         <button (click)="deleteBook(book.id)" mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
+        <div *ngIf="qtyWarning(book.qty)" style="margin-left: 10px;"> 
+          <button mat-icon-button color="warn" matTooltip="low quantity"><mat-icon>report_problem</mat-icon></button>
+        </div>
       </mat-cell>
       
     </ng-container>

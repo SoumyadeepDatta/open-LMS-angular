@@ -28,15 +28,15 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import { AdminProfileComponent, EditAdminProfile } from './private/admin-dashb/admin-profile/admin-profile.component';
-import { AddBook, EditBook, MBookComponent } from './private/admin-dashb/m-book/m-book.component';
+import { AddBook, EditBook, MBookComponent, ViewBook } from './private/admin-dashb/m-book/m-book.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MStudComponent, ViewStudent } from './private/admin-dashb/m-stud/m-stud.component';
 import { LibraryComponent } from './private/stud-dashb/library/library.component';
-import { LibAllComponent } from './private/stud-dashb/library/lib-all/lib-all.component';
-import { LibIssuedComponent } from './private/stud-dashb/library/lib-issued/lib-issued.component';
+import { IssueBook, LibAllComponent } from './private/stud-dashb/library/lib-all/lib-all.component';
+import { LibIssuedComponent, ViewIssueDetails } from './private/stud-dashb/library/lib-issued/lib-issued.component';
 import { MLibComponent, ViewStudentIssueDetails } from './private/admin-dashb/m-lib/m-lib.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
@@ -67,7 +67,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ViewStudent,
     EditStudentProfile,
     EditAdminProfile,
-    ViewStudentIssueDetails
+    ViewStudentIssueDetails,
+    IssueBook,
+    ViewIssueDetails,
+    ViewBook
   ],
   imports: [
     BrowserModule,
