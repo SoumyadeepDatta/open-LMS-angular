@@ -33,7 +33,7 @@ export class AuthAdminGuard implements CanActivate {
             e.password === localStorage.getItem('password')
           ) {
             console.table(e);
-            // console.log("ok");
+            
 
             this.activate = true;
             this.router.navigate(['admin']);
@@ -46,7 +46,7 @@ export class AuthAdminGuard implements CanActivate {
           this.router.navigate(['login']);
         }
       );
-      // console.log("outside subscribe : "+String(this.activate));
+      
 
       return this.activate;
     }

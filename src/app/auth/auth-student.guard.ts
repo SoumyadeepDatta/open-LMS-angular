@@ -33,7 +33,7 @@ export class AuthStudentGuard implements CanActivate {
             e.password === localStorage.getItem('password')
           ) {
             console.table(e);
-            // console.log("ok");
+            
 
             this.activate = true;
             this.router.navigate(['student']);
@@ -46,7 +46,7 @@ export class AuthStudentGuard implements CanActivate {
           this.router.navigate(['login']);
         }
       );
-      // console.log("outside subscribe : "+String(this.activate));
+      
 
       return this.activate;
     }
@@ -54,26 +54,4 @@ export class AuthStudentGuard implements CanActivate {
   }
 }
 
-/**
-return this.studentService.fetchStudent().pipe(
-      map((e: any) => {
-        if (
-          e.username === localStorage.getItem('username') &&
-          e.password === localStorage.getItem('password')
-        ) {
-          console.table(e);
-          console.log('ok');
 
-          console.table(e);
-          console.log('ok');
-
-          return true;
-        } else {
-          this.router.navigate(['login']);
-          console.log("not there");
-          
-          return false;
-        }
-      })
-    );
- */

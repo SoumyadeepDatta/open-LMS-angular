@@ -11,6 +11,8 @@ export class AdminService {
     password: '',
   };
 
+  
+
   constructor(private http: HttpClient) { }
 
   register(s: any) {

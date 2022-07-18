@@ -11,13 +11,14 @@
         <li>Auther: {{ book.auther }}</li>
         <li>Publisher: {{ book.publisher }}</li>
         <li>Qty left: {{ book.qty }}</li>
+        <li *ngIf="!canIssueBook"><span style="color: red;">Already issued</span></li>
       </ul>
     </div>
   </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
-  <div *ngIf="canIssue(book.qty)" style="margin-left: 10px;">
+  <div *ngIf="canIssueBook" style="margin-left: 10px;">
     <button (click)="issueBook(book.id)" mat-raised-button color="primary">Issue</button>
   </div>
 </div>

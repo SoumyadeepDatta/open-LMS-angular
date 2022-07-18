@@ -80,7 +80,7 @@ export class LibAllComponent implements OnInit {
     }
   }
 
-  // later move it to a dialouge box
+  
   
 
   openIssueBookDialog(book:any){
@@ -109,8 +109,10 @@ export class IssueBook implements OnInit{
   issuance = {
     id: '',
     sid: '',
-    bid: '',
+    bid: ''
   };
+
+  canIssueBook:boolean=false;
 
   constructor(
     public dialogRef: MatDialogRef<IssueBook>,
@@ -120,15 +122,25 @@ export class IssueBook implements OnInit{
   ){}
   
   ngOnInit(): void {
-      this.book=this.data;
+    this.studentService.fetchStudent().subscribe(
+      (e:any)=>{
+        this.book=this.data;
+        this.issuance.sid=e.id;
+        this.issuance.bid=this.data.id.toString();
+
+        this.libService.canIssue(this.issuance).subscribe(
+          (c:any)=>{
+              this.canIssueBook=c;
+          }, crr=>{console.log("error in c");
+          }
+        );
+      }, err=>{console.log("err in e");
+      }
+    );
+      
   }
 
-  canIssue(qty:any):boolean{
-    if(qty==0){
-      return false;
-    }
-    return true;
-  }
+  
 
   issueBook(bid: any) {
     this.studentService.fetchStudent().subscribe(
