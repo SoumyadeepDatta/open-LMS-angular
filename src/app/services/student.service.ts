@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseURL } from '../config/base-url';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class StudentService {
   constructor(private http: HttpClient) {}
 
   register(s: any) {
-    return this.http.post(`http://localhost:8080/student/register`, s);
+    return this.http.post(`${BaseURL.baseURL}/student/register`, s);
   }
 
   login(c:any):void{
@@ -43,7 +44,7 @@ export class StudentService {
     this.credential.username = localStorage.getItem('username') || '';
     this.credential.password = localStorage.getItem('password') || '';
     return this.http.post(
-      `http://localhost:8080/student/login`,
+      `${BaseURL.baseURL}/student/login`,
       this.credential
     );
   }
@@ -54,11 +55,11 @@ export class StudentService {
   }
 
   fetchAll(){
-    return this.http.get(`http://localhost:8080/student/fetchAll`);
+    return this.http.get(`${BaseURL.baseURL}/student/fetchAll`);
   }
 
   update(student:any){
-    return this.http.put(`http://localhost:8080/student/update`,student);
+    return this.http.put(`${BaseURL.baseURL}/student/update`,student);
   }
 
 

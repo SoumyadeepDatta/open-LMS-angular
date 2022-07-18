@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseURL } from '../config/base-url';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   register(s: any) {
-    return this.http.post(`http://localhost:8080/admin/register`, s);
+    return this.http.post(`${BaseURL.baseURL}/admin/register`, s);
   }
 
   login(c:any):void{
@@ -43,7 +44,7 @@ export class AdminService {
     this.credential.username = localStorage.getItem('username') || '';
     this.credential.password = localStorage.getItem('password') || '';
     return this.http.post(
-      `http://localhost:8080/admin/login`,
+      `${BaseURL.baseURL}/admin/login`,
       this.credential
     );
   }
@@ -54,7 +55,7 @@ export class AdminService {
   }
 
   update(admin:any){
-    return this.http.put(`http://localhost:8080/admin/update`,admin);
+    return this.http.put(`${BaseURL.baseURL}/admin/update`,admin);
   }
 
 }
