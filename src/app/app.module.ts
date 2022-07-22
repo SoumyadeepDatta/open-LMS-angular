@@ -34,9 +34,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MStudComponent, ViewStudent } from './private/admin-dashb/m-stud/m-stud.component';
-import { LibraryComponent } from './private/stud-dashb/library/library.component';
-import { IssueBook, LibAllComponent } from './private/stud-dashb/library/lib-all/lib-all.component';
-import { LibIssuedComponent, ViewIssueDetails } from './private/stud-dashb/library/lib-issued/lib-issued.component';
+import { IssueBook, LibAllComponent } from './private/stud-dashb/lib-all/lib-all.component';
+import { LibIssuedComponent, ViewIssueDetails } from './private/stud-dashb/lib-issued/lib-issued.component';
 import { MLibComponent, ViewStudentIssueDetails } from './private/admin-dashb/m-lib/m-lib.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
@@ -60,7 +59,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     EditBook,
     AddBook,
     MStudComponent,
-    LibraryComponent,
     LibAllComponent,
     LibIssuedComponent,
     MLibComponent,
